@@ -15,6 +15,15 @@
 		F4AB001D22BC39D300DAA581 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB001C22BC39D300DAA581 /* Constants.swift */; };
 		F4AB002022BC3BD300DAA581 /* NowPlayingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB001F22BC3BD300DAA581 /* NowPlayingList.swift */; };
 		F4AB002222BC3C5700DAA581 /* NowPlayingMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */; };
+		F4AB002622BC3F4700DAA581 /* NowPlayingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002422BC3F4700DAA581 /* NowPlayingListCell.swift */; };
+		F4AB002722BC3F4700DAA581 /* NowPlayingListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AB002522BC3F4700DAA581 /* NowPlayingListCell.xib */; };
+		F4AB002922BC435F00DAA581 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002822BC435F00DAA581 /* HTTP.swift */; };
+		F4AB002B22BC447E00DAA581 /* HTTPNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002A22BC447E00DAA581 /* HTTPNetworkRequest.swift */; };
+		F4AB002E22BC464E00DAA581 /* HTTPNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002D22BC464E00DAA581 /* HTTPNetworkResponse.swift */; };
+		F4AB003122BC467A00DAA581 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB003022BC467A00DAA581 /* URLEncoder.swift */; };
+		F4AB003422BC47D400DAA581 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB003322BC47D400DAA581 /* NetworkResult.swift */; };
+		F4AB003722BC49A900DAA581 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB003622BC49A900DAA581 /* NetworkService.swift */; };
+		F4AB003922BC4BE400DAA581 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB003822BC4BE400DAA581 /* Misc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +37,15 @@
 		F4AB001C22BC39D300DAA581 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F4AB001F22BC3BD300DAA581 /* NowPlayingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingList.swift; sourceTree = "<group>"; };
 		F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingMovie.swift; sourceTree = "<group>"; };
+		F4AB002422BC3F4700DAA581 /* NowPlayingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListCell.swift; sourceTree = "<group>"; };
+		F4AB002522BC3F4700DAA581 /* NowPlayingListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingListCell.xib; sourceTree = "<group>"; };
+		F4AB002822BC435F00DAA581 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		F4AB002A22BC447E00DAA581 /* HTTPNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkRequest.swift; sourceTree = "<group>"; };
+		F4AB002D22BC464E00DAA581 /* HTTPNetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkResponse.swift; sourceTree = "<group>"; };
+		F4AB003022BC467A00DAA581 /* URLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncoder.swift; sourceTree = "<group>"; };
+		F4AB003322BC47D400DAA581 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		F4AB003622BC49A900DAA581 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F4AB003822BC4BE400DAA581 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +118,7 @@
 		F4AB001922BC393200DAA581 /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
+				F4AB002322BC3F1800DAA581 /* ListCell */,
 				F4AB000522BC38D200DAA581 /* NowPlayingListViewController.swift */,
 			);
 			name = NowPlaying;
@@ -109,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F4AB001C22BC39D300DAA581 /* Constants.swift */,
+				F4AB003822BC4BE400DAA581 /* Misc.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -116,6 +136,10 @@
 		F4AB001B22BC39B500DAA581 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F4AB003522BC499800DAA581 /* Service */,
+				F4AB003222BC47C700DAA581 /* Result */,
+				F4AB002F22BC466E00DAA581 /* Encoding */,
+				F4AB002C22BC463B00DAA581 /* HTTP */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -127,6 +151,49 @@
 				F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		F4AB002322BC3F1800DAA581 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB002422BC3F4700DAA581 /* NowPlayingListCell.swift */,
+				F4AB002522BC3F4700DAA581 /* NowPlayingListCell.xib */,
+			);
+			name = ListCell;
+			sourceTree = "<group>";
+		};
+		F4AB002C22BC463B00DAA581 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB002A22BC447E00DAA581 /* HTTPNetworkRequest.swift */,
+				F4AB002822BC435F00DAA581 /* HTTP.swift */,
+				F4AB002D22BC464E00DAA581 /* HTTPNetworkResponse.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		F4AB002F22BC466E00DAA581 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB003022BC467A00DAA581 /* URLEncoder.swift */,
+			);
+			name = Encoding;
+			sourceTree = "<group>";
+		};
+		F4AB003222BC47C700DAA581 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB003322BC47D400DAA581 /* NetworkResult.swift */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
+		F4AB003522BC499800DAA581 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB003622BC49A900DAA581 /* NetworkService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		F4ABFFF722BC38D200DAA581 = {
@@ -198,6 +265,7 @@
 				F4AB000E22BC38D400DAA581 /* LaunchScreen.storyboard in Resources */,
 				F4AB000B22BC38D400DAA581 /* Assets.xcassets in Resources */,
 				F4AB000922BC38D200DAA581 /* Main.storyboard in Resources */,
+				F4AB002722BC3F4700DAA581 /* NowPlayingListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,10 +276,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AB003122BC467A00DAA581 /* URLEncoder.swift in Sources */,
 				F4AB000622BC38D200DAA581 /* NowPlayingListViewController.swift in Sources */,
+				F4AB003422BC47D400DAA581 /* NetworkResult.swift in Sources */,
 				F4AB000422BC38D200DAA581 /* AppDelegate.swift in Sources */,
+				F4AB002922BC435F00DAA581 /* HTTP.swift in Sources */,
+				F4AB003922BC4BE400DAA581 /* Misc.swift in Sources */,
 				F4AB001D22BC39D300DAA581 /* Constants.swift in Sources */,
+				F4AB002E22BC464E00DAA581 /* HTTPNetworkResponse.swift in Sources */,
+				F4AB002622BC3F4700DAA581 /* NowPlayingListCell.swift in Sources */,
 				F4AB002222BC3C5700DAA581 /* NowPlayingMovie.swift in Sources */,
+				F4AB002B22BC447E00DAA581 /* HTTPNetworkRequest.swift in Sources */,
+				F4AB003722BC49A900DAA581 /* NetworkService.swift in Sources */,
 				F4AB002022BC3BD300DAA581 /* NowPlayingList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
