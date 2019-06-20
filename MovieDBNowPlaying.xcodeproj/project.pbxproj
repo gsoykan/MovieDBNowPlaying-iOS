@@ -13,6 +13,8 @@
 		F4AB000B22BC38D400DAA581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4AB000A22BC38D400DAA581 /* Assets.xcassets */; };
 		F4AB000E22BC38D400DAA581 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB000C22BC38D400DAA581 /* LaunchScreen.storyboard */; };
 		F4AB001D22BC39D300DAA581 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB001C22BC39D300DAA581 /* Constants.swift */; };
+		F4AB002022BC3BD300DAA581 /* NowPlayingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB001F22BC3BD300DAA581 /* NowPlayingList.swift */; };
+		F4AB002222BC3C5700DAA581 /* NowPlayingMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F4AB000D22BC38D400DAA581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4AB000F22BC38D400DAA581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4AB001C22BC39D300DAA581 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F4AB001F22BC3BD300DAA581 /* NowPlayingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingList.swift; sourceTree = "<group>"; };
+		F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingMovie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 				F4AB001622BC38F300DAA581 /* Storyboards */,
 				F4AB001522BC38E100DAA581 /* SupportFiles */,
 				F4AB001B22BC39B500DAA581 /* API */,
+				F4AB001E22BC3B4500DAA581 /* Models */,
 				F4AB001A22BC394500DAA581 /* Utilities */,
 			);
 			path = MovieDBNowPlaying;
@@ -113,6 +118,15 @@
 			children = (
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		F4AB001E22BC3B4500DAA581 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4AB001F22BC3BD300DAA581 /* NowPlayingList.swift */,
+				F4AB002122BC3C5700DAA581 /* NowPlayingMovie.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		F4ABFFF722BC38D200DAA581 = {
@@ -197,6 +211,8 @@
 				F4AB000622BC38D200DAA581 /* NowPlayingListViewController.swift in Sources */,
 				F4AB000422BC38D200DAA581 /* AppDelegate.swift in Sources */,
 				F4AB001D22BC39D300DAA581 /* Constants.swift in Sources */,
+				F4AB002222BC3C5700DAA581 /* NowPlayingMovie.swift in Sources */,
+				F4AB002022BC3BD300DAA581 /* NowPlayingList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
