@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4727E0522BD0158001CDBCE /* NowPlayingListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4727E0422BD0158001CDBCE /* NowPlayingListContracts.swift */; };
+		F4727E0722BD016A001CDBCE /* NowPlayingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4727E0622BD016A001CDBCE /* NowPlayingListPresenter.swift */; };
 		F4AB000422BC38D200DAA581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB000322BC38D200DAA581 /* AppDelegate.swift */; };
 		F4AB000622BC38D200DAA581 /* NowPlayingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB000522BC38D200DAA581 /* NowPlayingListViewController.swift */; };
 		F4AB000922BC38D200DAA581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB000722BC38D200DAA581 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4727E0422BD0158001CDBCE /* NowPlayingListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListContracts.swift; sourceTree = "<group>"; };
+		F4727E0622BD016A001CDBCE /* NowPlayingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListPresenter.swift; sourceTree = "<group>"; };
 		F4AB000022BC38D200DAA581 /* MovieDBNowPlaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDBNowPlaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4AB000322BC38D200DAA581 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4AB000522BC38D200DAA581 /* NowPlayingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			children = (
 				F4AB002322BC3F1800DAA581 /* ListCell */,
 				F4AB000522BC38D200DAA581 /* NowPlayingListViewController.swift */,
+				F4727E0422BD0158001CDBCE /* NowPlayingListContracts.swift */,
+				F4727E0622BD016A001CDBCE /* NowPlayingListPresenter.swift */,
 			);
 			name = NowPlaying;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				F4AB001D22BC39D300DAA581 /* Constants.swift in Sources */,
 				F4AB002E22BC464E00DAA581 /* HTTPNetworkResponse.swift in Sources */,
 				F4AB002622BC3F4700DAA581 /* NowPlayingListCell.swift in Sources */,
+				F4727E0722BD016A001CDBCE /* NowPlayingListPresenter.swift in Sources */,
 				F4AB002222BC3C5700DAA581 /* NowPlayingMovie.swift in Sources */,
 				F4AB002B22BC447E00DAA581 /* HTTPNetworkRequest.swift in Sources */,
+				F4727E0522BD0158001CDBCE /* NowPlayingListContracts.swift in Sources */,
 				F4AB003722BC49A900DAA581 /* NetworkService.swift in Sources */,
 				F4AB002022BC3BD300DAA581 /* NowPlayingList.swift in Sources */,
 			);
