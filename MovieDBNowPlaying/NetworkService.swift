@@ -35,7 +35,6 @@ struct NetworkService{
                 }
                 }.resume()
         }catch{
-            
             completion(Result.failure(HTTPNetworkError.badRequest))
         }
     }

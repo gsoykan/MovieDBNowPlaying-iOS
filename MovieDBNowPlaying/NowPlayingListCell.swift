@@ -24,6 +24,7 @@ class NowPlayingListCell: UICollectionViewCell {
     func configure(by movie: NowPlayingMovie){
         self.nameLabel.text = movie.title
         self.shortDetailLabel.text = movie.overview
+        self.posterImageView.setImage(with: movie.posterPath)
     }
 
 }
