@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NowPlayingMovie: Codable {
+struct MinorMovie: Codable {
     let voteCount, id: Int
     let video: Bool
     let voteAverage: Double
@@ -18,7 +18,7 @@ struct NowPlayingMovie: Codable {
     let originalLanguage: OriginalLanguage
     let originalTitle: String
     let genreIDS: [Int]
-    let backdropPath: String
+    let backdropPath: String?
     let adult: Bool
     let overview, releaseDate: String
     

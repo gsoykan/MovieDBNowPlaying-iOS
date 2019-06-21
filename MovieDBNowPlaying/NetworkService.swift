@@ -19,6 +19,7 @@ struct NetworkService{
             var newParams = params
             newParams?.merge(baseParameters){ (current, _) in current }
             let request = try HTTPNetworkRequest.configureHTTPRequest(from: route, with: newParams, contains: nil, and: .get)
+            debugPrint(request)
             postSession.dataTask(with: request) { (data, res, err) in
                 
                 if let response = res as? HTTPURLResponse, let unwrappedData = data {

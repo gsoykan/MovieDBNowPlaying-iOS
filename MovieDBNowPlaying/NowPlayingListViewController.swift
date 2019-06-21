@@ -71,6 +71,15 @@ extension NowPlayingListViewController: UICollectionViewDataSource {
 
 extension NowPlayingListViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let list = self.list else { return }
+        let selectedMovie = list.results[indexPath.item]
+        guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
+        movieDetailVC.ID = String(selectedMovie.id)
+        movieDetailVC.presenterDelegate = MovieDetailPresenter.init(delegate: movieDetailVC)
+        self.navigationController?.pushViewController(movieDetailVC, animated: true)
+    }
+    
 }
 
 extension NowPlayingListViewController: UICollectionViewDelegateFlowLayout {

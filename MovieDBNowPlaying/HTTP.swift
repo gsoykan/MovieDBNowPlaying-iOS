@@ -8,9 +8,21 @@
 
 import Foundation
 
-public enum HTTPNetworkRoute: String{
-    case getNowPlayingMovies = "/movie/now_playing"
-    case getMovie = "/movie/"
+public enum HTTPNetworkRoute{
+    
+    case getNowPlayingMovie
+    case getMovie(ID: String)
+
+}
+
+extension HTTPNetworkRoute {
+    
+    var rawValue: String {
+        switch self {
+        case .getMovie(let ID): return "/movie/\(ID)"
+        case .getNowPlayingMovie: return "/movie/now_playing"
+        }
+    }
 }
 
 public enum HTTPMethod: String{

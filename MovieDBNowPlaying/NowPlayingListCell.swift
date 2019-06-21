@@ -21,7 +21,7 @@ class NowPlayingListCell: UICollectionViewCell {
         self.layer.masksToBounds = true
     }
     
-    func configure(by movie: NowPlayingMovie){
+    func configure(by movie: MinorMovie){
         self.nameLabel.text = movie.title
         self.shortDetailLabel.text = movie.overview
         self.posterImageView.setImage(with: movie.posterPath)

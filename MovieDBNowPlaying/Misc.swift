@@ -12,7 +12,8 @@ import Kingfisher
 
 extension UIImageView {
     
-    func setImage(with posterPath: String){
+    func setImage(with posterPath: String?){
+        guard let posterPath = posterPath else { print("no poster path"); return }
         guard let imageURL = URL.init(string: Constants.BASE_API_IMAGE_URL + posterPath) else { print("incorrect image url"); return }
         self.kf.setImage(with: imageURL, placeholder: nil, options: [KingfisherOptionsInfoItem.cacheOriginalImage, .transition(.fade(1))], progressBlock: nil, completionHandler: { result in })
     }
