@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"NowPlayingListViewController") as! NowPlayingListViewController
+        let navController = UINavigationController.init(rootViewController: viewController)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
         return true
     }
 

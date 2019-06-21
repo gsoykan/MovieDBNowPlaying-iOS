@@ -11,6 +11,14 @@ import UIKit
 class NowPlayingListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var collectionSpacing: CGFloat = 8
+    var list: NowPlayingList? {
+        didSet{
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +34,7 @@ class NowPlayingListViewController: UIViewController {
         NetworkService.shared.get(route: .getNowPlayingMovies, { [weak self] (result: Result<NowPlayingList>) in
             switch result {
             case .success(let data):
-                debugPrint(data)
+                self?.list = data
             case .failure(let error):
                 debugPrint(error)
             }
@@ -38,16 +46,28 @@ class NowPlayingListViewController: UIViewController {
 extension NowPlayingListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return self.list?.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let list = self.list else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingListCell.reuseID, for: indexPath) as? NowPlayingListCell else { return UICollectionViewCell() }
+        cell.configure(by: list.results[indexPath.item])
+        return cell
+        
     }
     
 }
 
 extension NowPlayingListViewController: UICollectionViewDelegate {
+    
+}
+
+extension NowPlayingListViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: self.view.bounds.width / 2 - collectionSpacing, height: self.view.bounds.height / 2.5)
+    }
     
 }
 
