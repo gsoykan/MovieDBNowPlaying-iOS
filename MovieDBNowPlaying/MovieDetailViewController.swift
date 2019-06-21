@@ -20,6 +20,14 @@ class MovieDetailViewController: UIViewController {
             }
         }
     }
+    var movieCollection: MovieCollection?{
+        didSet {
+            guard self.movieCollection != nil else { return }
+            DispatchQueue.main.async {
+                self.collectionCollectionView.reloadData()
+            }
+        }
+    }
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -39,9 +47,7 @@ class MovieDetailViewController: UIViewController {
         self.title = "Movie"
     }
     
-    func setup(){
-        //@TODO: collectionView cell setup pls
-    }
+    func setup(){}
     
     func configure(with movie: DetailedMovie){
         posterImageView.setImage(with: movie.posterPath)
@@ -75,4 +81,39 @@ extension MovieDetailViewController: MovieDetailVCProtocol {
         }
     }
     
+    func insert(collection: MovieCollection?, error: Error?){
+        if let collection = collection {
+            self.movieCollection = collection
+        } else if let error = error {
+            print(error)
+        }
+    }
+    
 }
+
+extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.movieCollection?.parts.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let movieCollection = self.movieCollection else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseID, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
+        cell.posterImageView.setImage(with: movieCollection.parts[indexPath.item].posterPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let collection = self.movieCollection else { return }
+        let selectedMovie = collection.parts[indexPath.item]
+        if String(selectedMovie.id) != self.ID {
+            guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
+            movieDetailVC.ID = String(selectedMovie.id)
+            movieDetailVC.presenterDelegate = MovieDetailPresenter.init(delegate: movieDetailVC)
+            self.navigationController?.pushViewController(movieDetailVC, animated: true)
+        }
+    }
+    
+}
+

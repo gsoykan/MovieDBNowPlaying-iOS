@@ -21,9 +21,23 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
             switch result {
             case .success(let data):
                 self?.viewControllerDelegate.insert(movie: data, error: nil)
+                if let collection = data.belongsToCollection{
+                     self?.getMovieCollection(by: String(collection.id))
+                }
             case .failure(let error):
                  debugPrint("e")
                 self?.viewControllerDelegate.insert(movie: nil, error: error)
+            }
+        })
+    }
+    
+    func getMovieCollection(by ID: String){
+        NetworkService.shared.get(route: .getCollection(ID: ID), { [weak self] (result: Result<MovieCollection>) in
+            switch result {
+            case .success(let data):
+                self?.viewControllerDelegate.insert(collection: data, error: nil)
+            case .failure(let error):
+                self?.viewControllerDelegate.insert(collection: nil, error: error)
             }
         })
     }

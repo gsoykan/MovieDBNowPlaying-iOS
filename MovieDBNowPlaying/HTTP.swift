@@ -12,6 +12,7 @@ public enum HTTPNetworkRoute{
     
     case getNowPlayingMovie
     case getMovie(ID: String)
+    case getCollection(ID: String)
 
 }
 
@@ -21,6 +22,7 @@ extension HTTPNetworkRoute {
         switch self {
         case .getMovie(let ID): return "/movie/\(ID)"
         case .getNowPlayingMovie: return "/movie/now_playing"
+        case .getCollection(let ID): return "/collection/\(ID)"
         }
     }
 }

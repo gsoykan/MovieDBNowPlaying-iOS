@@ -22,7 +22,8 @@ struct DetailedMovie: Codable {
     let productionCompanies: [ProductionCompany]
     let productionCountries: [ProductionCountry]
     let releaseDate: String
-    let revenue, runtime: Int
+    let revenue: Int
+    let runtime: Int?
     let spokenLanguages: [SpokenLanguage]
     let status, tagline, title: String
     let video: Bool
