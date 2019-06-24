@@ -10,7 +10,6 @@ import Foundation
 
 public struct URLEncoder {
     
-    /// Encode and set the parameters of a url request
     static func encodeParameters(for urlRequest: inout URLRequest, with parameters: HTTPParameters) throws {
         if parameters == nil { return }
         guard let url = urlRequest.url, let unwrappedParameters = parameters else { throw HTTPNetworkError.missingURL }
@@ -27,7 +26,6 @@ public struct URLEncoder {
         
     }
     
-    /// Set the addition http headers of the request
     static func setHeaders(for urlRequest: inout URLRequest, with headers: HTTPHeaders) throws {
         
         if headers == nil { return }

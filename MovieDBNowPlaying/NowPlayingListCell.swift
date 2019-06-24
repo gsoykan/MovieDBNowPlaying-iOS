@@ -8,23 +8,21 @@
 
 import UIKit
 
-class NowPlayingListCell: UICollectionViewCell {
-
-    static let reuseID: String = "NowPlayingListCell"
+final class NowPlayingListCell: UICollectionViewCell {
     
-    @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var shortDetailLabel: UILabel!
+    @IBOutlet weak private var posterImageView: UIImageView!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var shortDetailLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.masksToBounds = true
+        layer.masksToBounds = true
     }
     
-    func configure(by movie: MinorMovie){
-        self.nameLabel.text = movie.title
-        self.shortDetailLabel.text = movie.overview
-        self.posterImageView.setImage(with: movie.posterPath)
+    func configure(with movie: MinorMovie) {
+        nameLabel.text = movie.title
+        shortDetailLabel.text = movie.overview
+        posterImageView.setImage(with: movie.posterPath)
     }
 
 }

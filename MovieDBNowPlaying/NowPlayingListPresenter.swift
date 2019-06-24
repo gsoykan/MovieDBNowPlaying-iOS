@@ -13,10 +13,10 @@ class NowPlayingListPresenter: NowPlayingListPresenterProtocol {
     weak var viewControllerDelegate: NowPlayingListVCProtocol!
     
     init(delegate: NowPlayingListVCProtocol) {
-        self.viewControllerDelegate = delegate
+        viewControllerDelegate = delegate
     }
     
-    func getNowPlayingList(){
+    func getNowPlayingList() {
         NetworkService.shared.get(route: .getNowPlayingMovie, { [weak self] (result: Result<NowPlayingList>) in
             switch result {
             case .success(let data):

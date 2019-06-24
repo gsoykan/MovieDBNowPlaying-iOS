@@ -19,3 +19,19 @@ extension UIImageView {
     }
     
 }
+
+extension UICollectionView {
+   
+    func registerCell(with reuseID: String){
+        self.register(UINib(nibName: reuseID, bundle: nil), forCellWithReuseIdentifier: reuseID)
+    }
+    
+}
+
+extension UICollectionViewCell {
+    
+    static var reuseID: String {
+        return String(describing: self)
+    }
+    
+}

@@ -9,7 +9,8 @@
 import Foundation
 
 struct MinorMovie: Codable {
-    let voteCount, id: Int
+    let voteCount: Int
+    let id: Int
     let video: Bool
     let voteAverage: Double
     let title: String
@@ -20,11 +21,12 @@ struct MinorMovie: Codable {
     let genreIDS: [Int]
     let backdropPath: String?
     let adult: Bool
-    let overview, releaseDate: String
+    let overview: String
+    let releaseDate: String
     
     enum CodingKeys: String, CodingKey {
         case voteCount = "vote_count"
-        case id, video
+        case id, video, adult, overview
         case voteAverage = "vote_average"
         case title, popularity
         case posterPath = "poster_path"
@@ -32,7 +34,6 @@ struct MinorMovie: Codable {
         case originalTitle = "original_title"
         case genreIDS = "genre_ids"
         case backdropPath = "backdrop_path"
-        case adult, overview
         case releaseDate = "release_date"
     }
 }

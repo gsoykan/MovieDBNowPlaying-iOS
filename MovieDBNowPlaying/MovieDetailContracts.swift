@@ -17,7 +17,7 @@ protocol MovieDetailPresenterProtocol {
 protocol MovieDetailVCProtocol: class {
     
     func getMovieID()->String
-    func insert(movie: DetailedMovie?, error: Error?)
+    func insert(movie: MovieDetail?, error: Error?)
     func insert(collection: MovieCollection?, error: Error?)
     
 }

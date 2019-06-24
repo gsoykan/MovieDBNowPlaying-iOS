@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController {
+class MovieDetailViewController: BaseViewController {
     
     var presenterDelegate: MovieDetailPresenterProtocol!
-    var ID: String!
-    private var movie: DetailedMovie? {
+    var movieID: String!
+    private var movie: MovieDetail? {
         didSet {
             guard let movie = self.movie else { return }
             DispatchQueue.main.async {
@@ -20,7 +20,7 @@ class MovieDetailViewController: UIViewController {
             }
         }
     }
-    private var movieCollection: MovieCollection?{
+    private var movieCollection: MovieCollection? {
         didSet {
             guard self.movieCollection != nil else { return }
             DispatchQueue.main.async {
@@ -39,17 +39,20 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        self.presenterDelegate.getMovieDetail()
+        presenterDelegate.getMovieDetail()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Movie"
+        
     }
     
-    func setup(){}
+    private func setup() {
+        VCTitle = "Movie"
+        title = VCTitle
+    }
     
-    func configure(with movie: DetailedMovie){
+    private func configure(with movie: MovieDetail) {
         posterImageView.setImage(with: movie.posterPath)
         titleLabel.text = movie.title
         taglineLabel.text = movie.tagline
@@ -69,11 +72,11 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: MovieDetailVCProtocol {
     
-    func getMovieID()->String{
-        return self.ID
+    func getMovieID()->String {
+        return movieID
     }
     
-    func insert(movie: DetailedMovie?, error: Error?){
+    func insert(movie: MovieDetail?, error: Error?) {
         if let movie = movie {
             self.movie = movie
         } else if let error = error {
@@ -81,7 +84,7 @@ extension MovieDetailViewController: MovieDetailVCProtocol {
         }
     }
     
-    func insert(collection: MovieCollection?, error: Error?){
+    func insert(collection: MovieCollection?, error: Error?) {
         if let collection = collection {
             self.movieCollection = collection
         } else if let error = error {
@@ -94,25 +97,24 @@ extension MovieDetailViewController: MovieDetailVCProtocol {
 extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.movieCollection?.parts.count ?? 0
+        return movieCollection?.parts.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let movieCollection = self.movieCollection else { return UICollectionViewCell() }
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseID, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
-        cell.posterImageView.setImage(with: movieCollection.parts[indexPath.item].posterPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieInCollectionCell.reuseID, for: indexPath) as? MovieInCollectionCell else { return UICollectionViewCell() }
+        cell.configure(with: movieCollection.parts[indexPath.item].posterPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let collection = self.movieCollection else { return }
         let selectedMovie = collection.parts[indexPath.item]
-        if String(selectedMovie.id) != self.ID {
-            guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
-            movieDetailVC.ID = String(selectedMovie.id)
-            movieDetailVC.presenterDelegate = MovieDetailPresenter(delegate: movieDetailVC)
-            self.navigationController?.pushViewController(movieDetailVC, animated: true)
-        }
+        guard  String(selectedMovie.id) != movieID  else { return }
+        guard let movieDetailVC = storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
+        movieDetailVC.movieID = String(selectedMovie.id)
+        movieDetailVC.presenterDelegate = MovieDetailPresenter(delegate: movieDetailVC)
+        navigationController?.pushViewController(movieDetailVC, animated: true)
     }
     
 }

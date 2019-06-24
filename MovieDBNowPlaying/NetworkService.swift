@@ -13,7 +13,7 @@ struct NetworkService{
     static let shared = NetworkService()
     let postSession = URLSession(configuration: .default)
     let baseParameters = [ Constants.API_QUERY_KEY: Constants.API_KEY ]
-    // NOTE : NOT ALL Request requires parameters. You can pass nil in the configureHTTPRequest() method for the parameter argument.
+
     func get<T:Codable>(route: HTTPNetworkRoute, params: HTTPParameters = [:],  _ completion: @escaping (Result<T>) -> ()) {
         do{
             var newParams = params
@@ -44,4 +44,5 @@ struct NetworkService{
             completion(Result.failure(HTTPNetworkError.badRequest))
         }
     }
+    
 }

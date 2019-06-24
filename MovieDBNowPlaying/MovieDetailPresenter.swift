@@ -16,8 +16,8 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         self.viewControllerDelegate = delegate
     }
     
-    func getMovieDetail(){
-        NetworkService.shared.get(route: .getMovie(ID: viewControllerDelegate.getMovieID()), { [weak self] (result: Result<DetailedMovie>) in
+    func getMovieDetail() {
+        NetworkService.shared.get(route: .getMovie(ID: viewControllerDelegate.getMovieID()), { [weak self] (result: Result<MovieDetail>) in
             switch result {
             case .success(let data):
                 self?.viewControllerDelegate.insert(movie: data, error: nil)
@@ -31,7 +31,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         })
     }
     
-    func getMovieCollection(by ID: String){
+    func getMovieCollection(by ID: String) {
         NetworkService.shared.get(route: .getCollection(ID: ID), { [weak self] (result: Result<MovieCollection>) in
             switch result {
             case .success(let data):

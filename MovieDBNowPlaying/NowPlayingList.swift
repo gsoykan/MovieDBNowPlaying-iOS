@@ -15,9 +15,8 @@ struct NowPlayingList: Codable {
     let totalPages: Int
     
     enum CodingKeys: String, CodingKey {
-        case results, page
+        case results, page, dates
         case totalResults = "total_results"
-        case dates
         case totalPages = "total_pages"
     }
 }

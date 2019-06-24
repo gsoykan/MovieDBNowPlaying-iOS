@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NowPlayingListViewController: UIViewController {
+class NowPlayingListViewController: BaseViewController {
 
     @IBOutlet weak private var collectionView: UICollectionView!
     var presenterDelegate: NowPlayingListPresenterProtocol!
@@ -27,24 +27,21 @@ class NowPlayingListViewController: UIViewController {
         fetchData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.title = "Now Playing"
+    private func setup() {
+        collectionView.registerCell(with: NowPlayingListCell.reuseID)
+        VCTitle = "Now Playing"
+        title = VCTitle
     }
     
-    func setup(){
-        collectionView.register(UINib(nibName: NowPlayingListCell.reuseID, bundle: nil), forCellWithReuseIdentifier: NowPlayingListCell.reuseID)
-    }
-    
-    func fetchData(){
-        self.presenterDelegate.getNowPlayingList()
+    private func fetchData() {
+        presenterDelegate.getNowPlayingList()
     }
 
 }
 
 extension NowPlayingListViewController: NowPlayingListVCProtocol {
     
-    func insertList(data: NowPlayingList?, error: Error?){
+    func insertList(data: NowPlayingList?, error: Error?) {
         if let data = data {
             self.list = data
         } else if let error = error {
@@ -57,13 +54,13 @@ extension NowPlayingListViewController: NowPlayingListVCProtocol {
 extension NowPlayingListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.list?.results.count ?? 0
+        return list?.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let list = self.list else { return UICollectionViewCell() }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingListCell.reuseID, for: indexPath) as? NowPlayingListCell else { return UICollectionViewCell() }
-        cell.configure(by: list.results[indexPath.item])
+        cell.configure(with: list.results[indexPath.item])
         return cell
     }
     
@@ -74,10 +71,10 @@ extension NowPlayingListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let list = self.list else { return }
         let selectedMovie = list.results[indexPath.item]
-        guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
-        movieDetailVC.ID = String(selectedMovie.id)
+        guard let movieDetailVC = storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
+        movieDetailVC.movieID = String(selectedMovie.id)
         movieDetailVC.presenterDelegate = MovieDetailPresenter(delegate: movieDetailVC)
-        self.navigationController?.pushViewController(movieDetailVC, animated: true)
+        navigationController?.pushViewController(movieDetailVC, animated: true)
     }
     
 }
@@ -85,7 +82,7 @@ extension NowPlayingListViewController: UICollectionViewDelegate {
 extension NowPlayingListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.bounds.width / 2 - collectionSpacing, height: self.view.bounds.height / 2.5)
+        return CGSize(width: view.bounds.width / 2 - collectionSpacing, height: view.bounds.height / 2.5)
     }
     
 }

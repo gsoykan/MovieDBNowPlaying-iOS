@@ -16,9 +16,8 @@ struct MovieCollection: Codable {
     let parts: [MinorMovie]
     
     enum CodingKeys: String, CodingKey {
-        case id, name, overview
+        case id, name, overview, parts
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
-        case parts
     }
 }
