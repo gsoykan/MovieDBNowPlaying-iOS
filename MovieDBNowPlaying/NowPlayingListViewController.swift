@@ -10,10 +10,10 @@ import UIKit
 
 class NowPlayingListViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak private var collectionView: UICollectionView!
     var presenterDelegate: NowPlayingListPresenterProtocol!
-    var collectionSpacing: CGFloat = 8
-    var list: NowPlayingList? {
+    private var collectionSpacing: CGFloat = 8
+    private var list: NowPlayingList? {
         didSet{
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -33,7 +33,7 @@ class NowPlayingListViewController: UIViewController {
     }
     
     func setup(){
-        collectionView.register(UINib.init(nibName: NowPlayingListCell.reuseID, bundle: nil), forCellWithReuseIdentifier: NowPlayingListCell.reuseID)
+        collectionView.register(UINib(nibName: NowPlayingListCell.reuseID, bundle: nil), forCellWithReuseIdentifier: NowPlayingListCell.reuseID)
     }
     
     func fetchData(){
@@ -76,7 +76,7 @@ extension NowPlayingListViewController: UICollectionViewDelegate {
         let selectedMovie = list.results[indexPath.item]
         guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
         movieDetailVC.ID = String(selectedMovie.id)
-        movieDetailVC.presenterDelegate = MovieDetailPresenter.init(delegate: movieDetailVC)
+        movieDetailVC.presenterDelegate = MovieDetailPresenter(delegate: movieDetailVC)
         self.navigationController?.pushViewController(movieDetailVC, animated: true)
     }
     
@@ -85,7 +85,7 @@ extension NowPlayingListViewController: UICollectionViewDelegate {
 extension NowPlayingListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: self.view.bounds.width / 2 - collectionSpacing, height: self.view.bounds.height / 2.5)
+        return CGSize(width: self.view.bounds.width / 2 - collectionSpacing, height: self.view.bounds.height / 2.5)
     }
     
 }

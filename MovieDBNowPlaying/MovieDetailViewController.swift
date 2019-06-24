@@ -12,7 +12,7 @@ class MovieDetailViewController: UIViewController {
     
     var presenterDelegate: MovieDetailPresenterProtocol!
     var ID: String!
-    var movie: DetailedMovie? {
+    private var movie: DetailedMovie? {
         didSet {
             guard let movie = self.movie else { return }
             DispatchQueue.main.async {
@@ -20,7 +20,7 @@ class MovieDetailViewController: UIViewController {
             }
         }
     }
-    var movieCollection: MovieCollection?{
+    private var movieCollection: MovieCollection?{
         didSet {
             guard self.movieCollection != nil else { return }
             DispatchQueue.main.async {
@@ -29,12 +29,12 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var genresLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var collectionCollectionView: UICollectionView!
+    @IBOutlet weak private var posterImageView: UIImageView!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var taglineLabel: UILabel!
+    @IBOutlet weak private var genresLabel: UILabel!
+    @IBOutlet weak private var overviewLabel: UILabel!
+    @IBOutlet weak private var collectionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,7 +110,7 @@ extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewD
         if String(selectedMovie.id) != self.ID {
             guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
             movieDetailVC.ID = String(selectedMovie.id)
-            movieDetailVC.presenterDelegate = MovieDetailPresenter.init(delegate: movieDetailVC)
+            movieDetailVC.presenterDelegate = MovieDetailPresenter(delegate: movieDetailVC)
             self.navigationController?.pushViewController(movieDetailVC, animated: true)
         }
     }

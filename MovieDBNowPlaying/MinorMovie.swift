@@ -15,7 +15,7 @@ struct MinorMovie: Codable {
     let title: String
     let popularity: Double
     let posterPath: String
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: String
     let originalTitle: String
     let genreIDS: [Int]
     let backdropPath: String?
@@ -35,8 +35,4 @@ struct MinorMovie: Codable {
         case adult, overview
         case releaseDate = "release_date"
     }
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
 }

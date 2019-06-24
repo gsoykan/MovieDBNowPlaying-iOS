@@ -20,16 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func setAppearance(){
+    private func setAppearance(){
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.darkGray
     }
     
-    func setInitialViewController(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier :"NowPlayingListViewController") as! NowPlayingListViewController
-        viewController.presenterDelegate = NowPlayingListPresenter.init(delegate: viewController)
-        let navController = UINavigationController.init(rootViewController: viewController)
+    private func setInitialViewController(){
+        let storyboard = UIStoryboard(name: Constants.Storyboards.main, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier : Constants.ViewControllers.nowPlayingVC) as! NowPlayingListViewController
+        viewController.presenterDelegate = NowPlayingListPresenter(delegate: viewController)
+        let navController = UINavigationController(rootViewController: viewController)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()

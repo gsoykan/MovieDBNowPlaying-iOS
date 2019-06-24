@@ -28,8 +28,13 @@ struct NetworkService{
                     
                     switch result {
                     case .success:
-                        let result = try? JSONDecoder().decode(T.self, from: unwrappedData)
-                        completion(Result.success(result!))
+                        do{
+                             let result = try JSONDecoder().decode(T.self, from: unwrappedData)
+                             completion(Result.success(result))
+                        }catch{
+                            print(error)
+                            completion(Result.failure(error))
+                        }
                     case .failure:
                         completion(Result.failure(HTTPNetworkError.decodingFailed))
                     }
